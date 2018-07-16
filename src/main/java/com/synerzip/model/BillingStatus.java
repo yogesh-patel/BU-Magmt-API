@@ -15,8 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "billing_status")
 public class BillingStatus implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+   
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private long id;
@@ -41,10 +40,6 @@ public class BillingStatus implements Serializable {
 	
 	public long getId() {
 		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public Employee getEmployee() {
@@ -85,12 +80,7 @@ public class BillingStatus implements Serializable {
 
 	public void setInvolvement(float involvement) {
 		this.involvement = involvement;
-	}
-	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
+	}	
 
 	@Override
 	public String toString() {

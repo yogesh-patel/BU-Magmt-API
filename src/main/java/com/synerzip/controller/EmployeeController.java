@@ -25,7 +25,7 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 
 	@PostMapping(value="/employees")
-	public ResponseEntity<EmployeeVO> createStudent(@RequestBody EmployeeVO employeeVO) {
+	public ResponseEntity<EmployeeVO> createEmployee(@RequestBody EmployeeVO employeeVO) {
 
 		try {
 			EmployeeVO result = employeeService.saveEmployee(employeeVO);
@@ -38,25 +38,25 @@ public class EmployeeController {
 
 	
 	@GetMapping(value="/employees/{id}")
-	public ResponseEntity<List<EmployeeVO>> getStudent(@PathVariable("id") long id) {
+	public ResponseEntity<List<EmployeeVO>> getEmployee(@PathVariable("id") long id) {
 		EmployeeVO employeeVO = employeeService.getEmployee(id);
 		return new ResponseEntity (employeeVO, HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/employees")
-	public ResponseEntity<List<EmployeeVO>> getStudents() {
+	public ResponseEntity<List<EmployeeVO>> getEmployees() {
 		List<EmployeeVO> empList = employeeService.getEmployees();
 		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/employees/{name}")
-	public ResponseEntity<List<EmployeeVO>> getStudentsByName(@RequestParam(value="name") String name) {
+	public ResponseEntity<List<EmployeeVO>> getEmployeesByName(@RequestParam(value="name") String name) {
 		List<EmployeeVO> empList = employeeService.getEmployeesByName(name);
 		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);
 	}
 	
 	@PutMapping(value="employees/{id}")
-	public ResponseEntity<List<EmployeeVO>> updateStudent(@RequestBody EmployeeVO employeeVO, @PathVariable("id") long id) {
+	public ResponseEntity<List<EmployeeVO>> updateEmployee(@RequestBody EmployeeVO employeeVO, @PathVariable("id") long id) {
 		employeeService.saveEmployee(employeeVO);
 		List<EmployeeVO> empList = employeeService.getEmployees();
 		//List<StudentVO> studentList = studentService.updateStudents();
@@ -65,14 +65,14 @@ public class EmployeeController {
 	}
 
 	@DeleteMapping(value="/employees/{id}")
-	public ResponseEntity<List<EmployeeVO>> deleteStudent(@PathVariable("id") long id) {
+	public ResponseEntity<List<EmployeeVO>> deleteEmployee(@PathVariable("id") long id) {
 		List<EmployeeVO> empList = employeeService.deleteEmployees(id);
 		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);	
 
 	}
 	
 	@DeleteMapping(value="/employees/{name}")
-	public ResponseEntity<List<EmployeeVO>> deleteStudentByName(@RequestParam(value="name") String name) {
+	public ResponseEntity<List<EmployeeVO>> deleteEmployeeByName(@RequestParam(value="name") String name) {
 		List<EmployeeVO> empList = employeeService.deleteEmployeeByName(name);
 		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);	
 

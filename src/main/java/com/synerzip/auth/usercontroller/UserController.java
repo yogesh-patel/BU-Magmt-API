@@ -1,30 +1,38 @@
 package com.synerzip.auth.usercontroller;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.synerzip.auth.model.ApplicationUser;
-import com.synerzip.auth.userRepository.ApplicationUserRepository;
+import com.synerzip.auth.security.VOs.ApplicationUserVO;
+
+import com.synerzip.auth.userservice.ApplicationUserService;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    private ApplicationUserRepository applicationUserRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	@Autowired
+	ApplicationUserService applicationUserService;
+	
+	
+    @PostMapping(value ="/signup")
+    public ResponseEntity<ApplicationUserVO> signUp(@RequestBody ApplicationUserVO applicationUserVO) {  	
+    	
+    		try {
+    			ApplicationUserVO result = applicationUserService.saveApplicationUser(applicationUserVO);
+    			return new ResponseEntity<ApplicationUserVO>(result, HttpStatus.OK);
 
-    public UserController(ApplicationUserRepository applicationUserRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.applicationUserRepository = applicationUserRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
-
-    @PostMapping("/sign-up")
-    public void signUp(@RequestBody ApplicationUser user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        applicationUserRepository.save(user);
-    }
+    		} catch (Exception e) {
+    			return new ResponseEntity<ApplicationUserVO>(new ApplicationUserVO(), HttpStatus.EXPECTATION_FAILED);
+    		}
+    	}
+    	
+    	
+    
 }

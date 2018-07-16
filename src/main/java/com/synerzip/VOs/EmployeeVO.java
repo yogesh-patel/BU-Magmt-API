@@ -2,153 +2,59 @@ package com.synerzip.VOs;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+
 
 public class EmployeeVO {
 
-	private int emp_id;
+	private int empId;
 
-	private String emp_first_name;
+	private String empFirstName;
 	
-	private String emp_middle_name;
+	private String empMiddleName;
 	
-	private String emp_last_name;
+	private String empLastName;
 	
-/*	private LocalDateTime created_date;
-	
-	private String createdBy;
+	private Boolean isActive;
 
-	private LocalDateTime modified_date;
-	
-	private String modified_by;*/
-	
-	private Boolean is_active;
-	
-	private long manager_id;
-	
-	private long head_count;
-	
-	private long billable_count;
-	
-	private long bench_count;
-	
-	
-	public int getEmp_id() {
-		return emp_id;
+	public int getEmpId() {
+		return empId;
 	}
 
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
+	public void setEmpId(int empId) {
+		this.empId = empId;
 	}
 
-
-
-	public String getEmp_first_name() {
-		return emp_first_name;
+	public String getEmpFirstName() {
+		return empFirstName;
 	}
 
-
-
-	public void setEmp_first_name(String emp_first_name) {
-		this.emp_first_name = emp_first_name;
+	public void setEmpFirstName(String empFirstName) {
+		this.empFirstName = empFirstName;
 	}
 
-
-
-	public String getEmp_middle_name() {
-		return emp_middle_name;
+	public String getEmpMiddleName() {
+		return empMiddleName;
 	}
 
-
-
-	public void setEmp_middle_name(String emp_middle_name) {
-		this.emp_middle_name = emp_middle_name;
+	public void setEmpMiddleName(String empMiddleName) {
+		this.empMiddleName = empMiddleName;
 	}
 
-
-
-	public String getEmp_last_name() {
-		return emp_last_name;
+	public String getEmpLastName() {
+		return empLastName;
 	}
 
-
-
-	public void setEmp_last_name(String emp_last_name) {
-		this.emp_last_name = emp_last_name;
+	public void setEmpLastName(String empLastName) {
+		this.empLastName = empLastName;
 	}
 
-
-
-	/*public LocalDateTime getCreated_date() {
-		return created_date;
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-
-
-	public void setCreated_date(LocalDateTime created_date) {
-		this.created_date = created_date;
-	}
-
-
-
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-
-
-	public LocalDateTime getModified_date() {
-		return modified_date;
-	}
-
-
-
-	public void setModified_date(LocalDateTime modified_date) {
-		this.modified_date = modified_date;
-	}
-
-
-
-	public String getModified_by() {
-		return modified_by;
-	}
-
-
-
-	public void setModified_by(String modified_by) {
-		this.modified_by = modified_by;
-	}
-
-*/
-
-	public Boolean getIs_active() {
-		return is_active;
-	}
-
-
-
-	public void setIs_active(Boolean is_active) {
-		this.is_active = is_active;
-	}
-
-
-
-	public long getManager_id() {
-		return manager_id;
-	}
-
-
-
-	public void setManager_id(long manager_id) {
-		this.manager_id = manager_id;
-	}
-
-	
-
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}	
 	
 }

@@ -16,7 +16,7 @@ public class ManagerialArea {
 	private Long id;
 	
 	@Column(nullable = false)
-	private String managerial_area_name;
+	private String managerialAreaName;
 
 	public Long getId() {
 		return id;
@@ -26,12 +26,12 @@ public class ManagerialArea {
 		this.id = id;
 	}
 
-	public String getManagerial_area_name() {
-		return managerial_area_name;
+	public String geManagerialAreaName() {
+		return managerialAreaName;
 	}
 
-	public void setManagerial_area_name(String managerial_area_name) {
-		this.managerial_area_name = managerial_area_name;
+	public void setManagerial_area_name(String managerialAreaName) {
+		this.managerialAreaName = managerialAreaName;
 	}
 
 	

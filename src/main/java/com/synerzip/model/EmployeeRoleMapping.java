@@ -18,8 +18,7 @@ public class EmployeeRoleMapping {
 	@Id	
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
+	private long id;	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "emp_id", referencedColumnName = "emp_id")	
@@ -31,7 +30,7 @@ public class EmployeeRoleMapping {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "manager_id", referencedColumnName = "emp_id")
-	private Employee manager_id;
+	private Employee managerId;
 	
 	public Employee getEmployee() {
 		return employee;
@@ -39,14 +38,14 @@ public class EmployeeRoleMapping {
 	
 	
 
-	public Employee getManager_id() {
-		return manager_id;
+	public Employee getManagerId() {
+		return managerId;
 	}
 
 
 
-	public void setManager_id(Employee manager_id) {
-		this.manager_id = manager_id;
+	public void setManager_id(Employee managerId) {
+		this.managerId = managerId;
 	}
 
 

@@ -30,20 +30,11 @@ public class DashboardController {
 	EmployeeService employeeService;
 	
 	@Autowired
-	BillingStatusService billingStatusService;
+	BillingStatusService billingStatusService;	
 	
-	@Value("${synerzip.user.bu}")
-	private String userBU;
-	
-	@GetMapping(value ="/budata")
-	public ResponseEntity<String> getData() {
-		
-		return new ResponseEntity<String>(userBU, HttpStatus.OK);
-	}
-	
-	//@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping(value="/data")
-	public ResponseEntity<Map> getEmployeeCount() {
+	public ResponseEntity<Map>getEmployeeCount() {
 		
 		Long countBench = billingStatusService.getStatusCount("bench"); 
 		Long countBillable = billingStatusService.getStatusCount("billable"); 

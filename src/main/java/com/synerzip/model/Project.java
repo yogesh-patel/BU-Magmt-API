@@ -18,96 +18,88 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDa
 public class Project {
 
 	@Id
+	@Column(name="project_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long project_id;
+	private long projectId;
 	
 	@Column(nullable = false)
-	private String project_name;
+	private String projectName;
 	
-	private String project_description;
+	private String projectDescription;
 	
 	@Convert(converter = LocalDateTimeConverter.class)
-	private LocalDateTime created_date;
+	private LocalDateTime createdDate;
 
-	private String created_by;
+	private String createdBy;
 
 	@Convert(converter = LocalDateTimeConverter.class)
-	private LocalDateTime modified_date;
+	private LocalDateTime modifiedDate;
 
-	private String modified_by;
+	private String modifiedBy;
 	
 	@Column(nullable = false)
-	private Boolean is_active;
+	private Boolean isActive;
 
-	
-
-	public long getProject_id() {
-		return project_id;
+	public long getProjectId() {
+		return projectId;
 	}
 
-	public void setProject_id(Long project_id) {
-		this.project_id = project_id;
+	public String getProjectName() {
+		return projectName;
 	}
 
-	public String getProject_name() {
-		return project_name;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
-	public void setProject_name(String project_name) {
-		this.project_name = project_name;
+	public String getProjectDescription() {
+		return projectDescription;
 	}
 
-	public String getProject_description() {
-		return project_description;
+	public void setProjectDescription(String projectDescription) {
+		this.projectDescription = projectDescription;
 	}
 
-	public void setProject_description(String project_description) {
-		this.project_description = project_description;
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
 	}
 
-	public LocalDateTime getCreated_date() {
-		return created_date;
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	public void setCreated_date(LocalDateTime created_date) {
-		this.created_date = created_date;
+	public String getCreatedBy() {
+		return createdBy;
 	}
 
-	public String getCreated_by() {
-		return created_by;
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 
-	public void setCreated_by(String created_by) {
-		this.created_by = created_by;
+	public LocalDateTime getModifiedDate() {
+		return modifiedDate;
 	}
 
-	public LocalDateTime getModified_date() {
-		return modified_date;
+	public void setModifiedDate(LocalDateTime modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
-	public void setModified_date(LocalDateTime modified_date) {
-		this.modified_date = modified_date;
+	public String getModifiedBy() {
+		return modifiedBy;
 	}
 
-	public String getModified_by() {
-		return modified_by;
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
 	}
 
-	public void setModified_by(String modified_by) {
-		this.modified_by = modified_by;
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-	public Boolean getIs_active() {
-		return is_active;
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
-	public void setIs_active(Boolean is_active) {
-		this.is_active = is_active;
-	}
-	
-	
-	
-	
 	
 	
 }

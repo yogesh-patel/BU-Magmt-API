@@ -13,8 +13,8 @@ public class BillingStatusServiceImpl implements BillingStatusService{
 	BillingStatusRepository billingStatusRepository;
 
 	@Override
-	public Long getStatusCount(String string) {
-		return billingStatusRepository.countByBillableStatus(string);
+	public Long getStatusCount(String statusName) {
+		return billingStatusRepository.countByBillableStatus(statusName);
 	}
 
 	

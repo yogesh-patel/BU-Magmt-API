@@ -12,28 +12,30 @@ import javax.persistence.Table;
 public class Skill {
 	
 	@Id
+	@Column(name = "skill_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long skill_id;
+	private long skillId;
 	
 	@Column(nullable = false)
-	private String skill_name;	
+	private String skillName;
+
+	public long getSkillId() {
+		return skillId;
+	}
+
+	public void setSkillId(long skillId) {
+		this.skillId = skillId;
+	}
+
+	public String getSkillName() {
+		return skillName;
+	}
+
+	public void setSkillName(String skillName) {
+		this.skillName = skillName;
+	}	
 	
-	public long getSkill_id() {
-		return skill_id;
-	}
-
-	public void setSkill_id(Long skill_id) {
-		this.skill_id = skill_id;
-	}
-
-	public String getSkill_name() {
-		return skill_name;
-	}
-
-	public void setSkill_name(String skill_name) {
-		this.skill_name = skill_name;
-	}
-
+	
 	
 
 }
