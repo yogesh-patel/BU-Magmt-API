@@ -37,13 +37,17 @@ public class DashboardController {
 	public ResponseEntity<Map>getEmployeeCount() {
 		
 		Long countBench = billingStatusService.getStatusCount("bench"); 
-		Long countBillable = billingStatusService.getStatusCount("billable"); 
+		Long countBillable = billingStatusService.getStatusCount("billable");
+		Long countPip = billingStatusService.getStatusCount("PIP");
+		Long countOtherBU = billingStatusService.getStatusCount("Hired from other BU");
 		Long headcount = employeeService.getHeadCount();	
 				
 		Map<String,Long> map =new HashMap<>();
 		map.put("bench",countBench);
 		map.put("billable",countBillable);
 		map.put("headcount", headcount);
+		map.put("PIP", countPip);
+		map.put("OtherBU", countOtherBU);
 		
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}

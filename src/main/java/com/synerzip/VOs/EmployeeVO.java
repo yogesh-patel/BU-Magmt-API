@@ -7,7 +7,7 @@ import javax.persistence.Column;
 
 public class EmployeeVO {
 
-	private int empId;
+	private long empId;
 
 	private String empFirstName;
 	
@@ -17,11 +17,11 @@ public class EmployeeVO {
 	
 	private Boolean isActive;
 
-	public int getEmpId() {
+	public long getEmpId() {
 		return empId;
 	}
 
-	public void setEmpId(int empId) {
+	public void setEmpId(long empId) {
 		this.empId = empId;
 	}
 
@@ -55,6 +55,16 @@ public class EmployeeVO {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
-	}	
+	}
+
+	public EmployeeVO(long empId, String empFirstName, String empMiddleName, String empLastName) {
+		super();
+		this.empId = empId;
+		this.empFirstName = empFirstName;
+		this.empMiddleName = empMiddleName;
+		this.empLastName = empLastName;
+	}
+	
+	
 	
 }
