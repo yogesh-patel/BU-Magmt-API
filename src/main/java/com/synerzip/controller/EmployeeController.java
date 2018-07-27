@@ -32,19 +32,13 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 
 	@GetMapping(value="/employees/{id}")
-	public ResponseEntity<List<EmployeeVO>> getEmployee(@PathVariable("id") long id) {
+	public ResponseEntity<EmployeeVO> getEmployee(@PathVariable("id") long id) {
 		EmployeeVO employeeVO = employeeService.getEmployee(id);
-		return new ResponseEntity (employeeVO, HttpStatus.OK);
+		return new ResponseEntity<EmployeeVO> (employeeVO, HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/employees")
-	public ResponseEntity<List<EmployeeVO>> getEmployees() {
-		List<EmployeeVO> empList = employeeService.getEmployees();
-		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);
-	}	
-	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping(value="/employees/pagenation")
+	@GetMapping(value="/employees")
 	public PaginationResponseDto<EmployeeVO> getCustomers(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize,
 			@RequestParam(value = "sortOn", required = false, defaultValue = "empFirstName") String sortOn,
@@ -54,17 +48,10 @@ public class EmployeeController {
 		return employeeService.getEmployeesPagenation(page, pageSize, sortOn, sortOrder, searchText);
 	}
 	
-	@GetMapping(value="/employees/{name}")
-	public ResponseEntity<List<EmployeeVO>> getEmployeesByName(@RequestParam(value="name") String name) {
-		List<EmployeeVO> empList = employeeService.getEmployeesByName(name);
-		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);
-	}
-	
 	@PutMapping(value="employees/{id}")
 	public ResponseEntity<List<EmployeeVO>> updateEmployee(@RequestBody EmployeeVO employeeVO, @PathVariable("id") long id) {
 		employeeService.saveEmployee(employeeVO);
 		List<EmployeeVO> empList = employeeService.getEmployees();
-		//List<StudentVO> studentList = studentService.updateStudents();
 		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);	
 
 	}
@@ -76,13 +63,7 @@ public class EmployeeController {
 
 	}
 	
-	@DeleteMapping(value="/employees/{name}")
-	public ResponseEntity<List<EmployeeVO>> deleteEmployeeByName(@RequestParam(value="name") String name) {
-		List<EmployeeVO> empList = employeeService.deleteEmployeeByName(name);
-		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);	
 
-	}
-	
 	
 	
 }

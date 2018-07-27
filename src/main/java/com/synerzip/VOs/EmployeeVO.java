@@ -2,20 +2,25 @@ package com.synerzip.VOs;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-
-
 public class EmployeeVO {
 
 	private long empId;
 
 	private String empFirstName;
-	
+
 	private String empMiddleName;
-	
+
 	private String empLastName;
-	
+
 	private Boolean isActive;
+
+	private String email;
+
+	private int contact;
+
+	private LocalDateTime DOB;
+
+	private String experience;
 
 	public long getEmpId() {
 		return empId;
@@ -57,6 +62,38 @@ public class EmployeeVO {
 		this.isActive = isActive;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getContact() {
+		return contact;
+	}
+
+	public void setContact(int contact) {
+		this.contact = contact;
+	}
+
+	public LocalDateTime getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(LocalDateTime dOB) {
+		DOB = dOB;
+	}
+
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
 	public EmployeeVO(long empId, String empFirstName, String empMiddleName, String empLastName) {
 		super();
 		this.empId = empId;
@@ -64,7 +101,5 @@ public class EmployeeVO {
 		this.empMiddleName = empMiddleName;
 		this.empLastName = empLastName;
 	}
-	
-	
-	
+
 }

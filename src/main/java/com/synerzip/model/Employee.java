@@ -13,45 +13,44 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateTimeConverter;
 
-
 @Entity
 @Table(name = "employees")
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id	
-	@Column(name="emp_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+
+	@Id
+	@Column(name = "emp_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long empId;
-	
+
 	@Column(nullable = false)
 	private String empFirstName;
-	
+
 	@Column(nullable = true)
 	private String empMiddleName;
-	
+
 	@Column(nullable = false)
 	private String empLastName;
-	
+
 	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalDateTime createdDate;
-	
+
 	private String createdBy;
 
 	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalDateTime modifiedDate;
-	
+
 	private String email;
-	
+
 	private int contact;
-	
-	private String DOB;
-	
+
+	private LocalDateTime DOB;
+
 	private String experience;
-	
+
 	private String modifiedBy;
-	
-	private Boolean isActive;
+
+	private Boolean isActive = true;
 
 	public long getEmpId() {
 		return empId;
@@ -104,7 +103,7 @@ public class Employee implements Serializable {
 	public void setModifiedDate(LocalDateTime modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -121,11 +120,11 @@ public class Employee implements Serializable {
 		this.contact = contact;
 	}
 
-	public String getDOB() {
+	public LocalDateTime getDOB() {
 		return DOB;
 	}
 
-	public void setDOB(String dOB) {
+	public void setDOB(LocalDateTime dOB) {
 		DOB = dOB;
 	}
 
@@ -156,18 +155,5 @@ public class Employee implements Serializable {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	
-}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-
+}
