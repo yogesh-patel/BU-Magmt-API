@@ -19,7 +19,7 @@ public class ApplicationUser {
 	    private long userId;
 	    private String username;
 	    private String password;
-	    private Boolean enabled;
+	    private Boolean enabled=true;
 
 		@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 		private List<LinkUserRole> linkUserRoles;

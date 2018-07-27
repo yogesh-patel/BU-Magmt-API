@@ -40,7 +40,14 @@ public class Employee implements Serializable {
 
 	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalDateTime modifiedDate;
-
+	
+	private String email;
+	
+	private int contact;
+	
+	private String DOB;
+	
+	private String experience;
 	
 	private String modifiedBy;
 	
@@ -96,6 +103,42 @@ public class Employee implements Serializable {
 
 	public void setModifiedDate(LocalDateTime modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getContact() {
+		return contact;
+	}
+
+	public void setContact(int contact) {
+		this.contact = contact;
+	}
+
+	public String getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(String dOB) {
+		DOB = dOB;
+	}
+
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
+	public void setEmpId(long empId) {
+		this.empId = empId;
 	}
 
 	public String getModifiedBy() {
