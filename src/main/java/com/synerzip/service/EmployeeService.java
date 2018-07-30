@@ -19,17 +19,17 @@ public interface EmployeeService {
 
 	public EmployeeVO getEmployee(long id);
 
-	public List<EmployeeVO> getEmployees();
+	/*public List<EmployeeVO> getEmployees();
 
-	public List<EmployeeVO> getEmployeesByName(String name);
+	public List<EmployeeVO> getEmployeesByName(String name);*/
 
-	public List<EmployeeVO> deleteEmployees(long id);
+	public void deleteEmployees(long id);
 
-	public List<EmployeeVO> deleteEmployeeByName(String name);
+	/*public List<EmployeeVO> deleteEmployeeByName(String name);
 	
 	public Iterable<Employee> findAllEmployees();
 	
-	public List<Employee> getPage(int pageNumber);
+	public List<Employee> getPage(int pageNumber);*/
 	
 	public PaginationResponseDto<EmployeeVO> getEmployeesPagenation(Integer page, Integer pageSize, String sortOn,
 			String sortOrder, String searchText);

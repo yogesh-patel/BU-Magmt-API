@@ -21,6 +21,49 @@ public class EmployeeVO {
 	private LocalDateTime DOB;
 
 	private String experience;
+	
+	private String manager;
+	private String Projct;
+	private String status;
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+	private String fullname;
+	
+	
+
+	public String getManager() {
+		return manager;
+	}
+
+	public void setManager(String manager) {
+		this.manager = manager;
+	}
+
+	public String getProjct() {
+		return Projct;
+	}
+
+	public void setProjct(String projct) {
+		Projct = projct;
+	}
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
 
 	public long getEmpId() {
 		return empId;
@@ -92,6 +135,18 @@ public class EmployeeVO {
 
 	public void setExperience(String experience) {
 		this.experience = experience;
+	}
+	
+	public EmployeeVO() {
+		
+	}
+	
+	public EmployeeVO(String manager, String projct, String status, String fullname) {
+		super();
+		this.manager = manager;
+		Projct = projct;
+		this.status = status;
+		this.fullname = fullname;
 	}
 
 	public EmployeeVO(long empId, String empFirstName, String empMiddleName, String empLastName) {

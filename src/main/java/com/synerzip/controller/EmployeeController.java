@@ -23,6 +23,7 @@ import com.synerzip.VOs.EmployeeVO;
 import com.synerzip.model.Employee;
 import com.synerzip.service.EmployeeService;
 
+
 @RestController
 
 public class EmployeeController {
@@ -30,15 +31,9 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
-
-	@GetMapping(value="/employees/{id}")
-	public ResponseEntity<EmployeeVO> getEmployee(@PathVariable("id") long id) {
-		EmployeeVO employeeVO = employeeService.getEmployee(id);
-		return new ResponseEntity<EmployeeVO> (employeeVO, HttpStatus.OK);
-	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping(value="/employees")
+	@GetMapping(value="employees")
 	public PaginationResponseDto<EmployeeVO> getCustomers(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize,
 			@RequestParam(value = "sortOn", required = false, defaultValue = "empFirstName") String sortOn,
@@ -48,18 +43,38 @@ public class EmployeeController {
 		return employeeService.getEmployeesPagenation(page, pageSize, sortOn, sortOrder, searchText);
 	}
 	
-	@PutMapping(value="employees/{id}")
-	public ResponseEntity<List<EmployeeVO>> updateEmployee(@RequestBody EmployeeVO employeeVO, @PathVariable("id") long id) {
-		employeeService.saveEmployee(employeeVO);
-		List<EmployeeVO> empList = employeeService.getEmployees();
-		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);	
+	@PostMapping(value="employees")
+	public ResponseEntity<EmployeeVO> createEmployee(@RequestBody EmployeeVO empVO) {
 
+		try {
+			EmployeeVO result = employeeService.saveEmployee(empVO);
+			return new ResponseEntity<EmployeeVO>(result, HttpStatus.OK);
+
+		} catch (Exception e) {
+			return new ResponseEntity<EmployeeVO>(new EmployeeVO(), HttpStatus.EXPECTATION_FAILED);
+		}
 	}
+	
+	@PutMapping(value="employees/{id}")
+	public ResponseEntity<EmployeeVO> updateEmployee(@RequestBody EmployeeVO empVO, @PathVariable("id") long id) {
+		EmployeeVO empTemp = employeeService.getEmployee(id);
+		
+		if(empTemp!=null) {
+			empVO.setEmpId(empTemp.getEmpId());
+		}
+		else {
+			return new ResponseEntity<EmployeeVO>(HttpStatus.NOT_FOUND);
+		}
+		employeeService.saveEmployee(empVO);
+		EmployeeVO employeeVO = employeeService.getEmployee(id);
+		return new ResponseEntity<EmployeeVO>(employeeVO, HttpStatus.OK);	
 
-	@DeleteMapping(value="/employees/{id}")
-	public ResponseEntity<List<EmployeeVO>> deleteEmployee(@PathVariable("id") long id) {
-		List<EmployeeVO> empList = employeeService.deleteEmployees(id);
-		return new ResponseEntity<List<EmployeeVO>>(empList, HttpStatus.OK);	
+}
+
+	@DeleteMapping(value="employees/{id}")
+	public ResponseEntity deleteEmployee(@PathVariable("id") long id) {
+		 employeeService.deleteEmployees(id);
+		return new ResponseEntity(HttpStatus.OK);	
 
 	}
 	

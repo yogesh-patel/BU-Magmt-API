@@ -2,6 +2,7 @@ package com.synerzip.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -42,9 +43,9 @@ public class Employee implements Serializable {
 
 	private String email;
 
-	private int contact;
+	private long contact;
 
-	private LocalDateTime DOB;
+	private Date dob;
 
 	private String experience;
 
@@ -111,21 +112,22 @@ public class Employee implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public int getContact() {
+	
+	public long getContact() {
 		return contact;
 	}
 
-	public void setContact(int contact) {
+	public void setContact(long contact) {
 		this.contact = contact;
 	}
 
-	public LocalDateTime getDOB() {
-		return DOB;
+	
+	public Date getDob() {
+		return dob;
 	}
 
-	public void setDOB(LocalDateTime dOB) {
-		DOB = dOB;
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 	public String getExperience() {
