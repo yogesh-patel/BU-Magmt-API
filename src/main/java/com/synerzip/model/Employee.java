@@ -2,6 +2,7 @@ package com.synerzip.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -13,38 +14,44 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateTimeConverter;
 
-
 @Entity
 @Table(name = "employees")
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id	
-	@Column(name="emp_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+
+	@Id
+	@Column(name = "emp_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long empId;
-	
+
 	@Column(nullable = false)
 	private String empFirstName;
-	
+
 	@Column(nullable = true)
 	private String empMiddleName;
-	
+
 	@Column(nullable = false)
 	private String empLastName;
-	
+
 	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalDateTime createdDate;
-	
+
 	private String createdBy;
 
 	@Convert(converter = LocalDateTimeConverter.class)
 	private LocalDateTime modifiedDate;
 
-	
+	private String email;
+
+	private long contact;
+
+	private Date dob;
+
+	private String experience;
+
 	private String modifiedBy;
-	
-	private Boolean isActive;
+
+	private Boolean isActive = true;
 
 	public long getEmpId() {
 		return empId;
@@ -98,6 +105,43 @@ public class Employee implements Serializable {
 		this.modifiedDate = modifiedDate;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public long getContact() {
+		return contact;
+	}
+
+	public void setContact(long contact) {
+		this.contact = contact;
+	}
+
+	
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
+	public void setEmpId(long empId) {
+		this.empId = empId;
+	}
+
 	public String getModifiedBy() {
 		return modifiedBy;
 	}
@@ -113,17 +157,5 @@ public class Employee implements Serializable {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-
+}

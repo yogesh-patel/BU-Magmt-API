@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employee_skill_mapping")
+@Table(name = "employee_and_skill_mapping")
 public class EmployeeSkillMapping {
 	
 	@Id	
@@ -21,7 +21,7 @@ public class EmployeeSkillMapping {
 	private long id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "member", referencedColumnName = "emp_id")	
+	@JoinColumn(name = "emp_id", referencedColumnName = "emp_id")	
 	private Employee employee;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
